@@ -1,0 +1,58 @@
+version: "3"
+services:
+  backend:
+    build: ./SlutaSnusaBackend/
+    environment:
+      MYSQL_PASSWORD: /run/secrets/mysql_password
+      MYSQL_DATABASE: slutasnusadb
+      MYSQL_USER: slutasnusa
+    command: "/slutasnusabackend"
+    ports:
+      - 8080:8080
+    secrets:
+      - mysql_password
+    depends_on:
+      - db
+    restart: on-failure
+  db:
+    image: "mariadb:latest"
+    volumes:
+      - slutasnusa-db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
+      MYSQL_PASSWORD: /run/secrets/mysql_password
+      MYSQL_DATABASE: slutasnusadb
+      MYSQL_USER: slutasnusa
+    ports:
+      - 3307:3306
+    secrets:
+      - mysql_root_password
+      - mysql_password
+    restart: always
+    
+  frontend:
+    build: ./SlutaSnusaFrontend/
+    command: ["python",  "manage.py", "runserver", "0.0.0.0:8000"]
+    volumes:
+      - django-db:/var/lib/sqlite
+    ports:
+      - 8000:8000
+    environment:
+      DJANGOSECRETKEY: /run/secrets/django_secret
+    secrets:
+      - django_secret
+    depends_on:
+      - backend
+    restart: always
+
+secrets:
+  django_secret:
+    file: ./Secrets/.DJANGO_SECRET_KEY
+  mysql_root_password:
+    file: ./Secrets/.MYSQL_ROOT_PASSWORD
+  mysql_password:
+    file: ./Secrets/.MYSQL_PASSWORD
+
+volumes:
+  slutasnusa-db:
+  django-db:

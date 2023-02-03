@@ -1,0 +1,56 @@
+
+          {% extends 'base.html' %}
+          {% block content %} 
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--12-col">
+            <div>
+              <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title">
+                  <h2 class="mdl-card__title-text">Congratulations {{ user.get_username.capitalize }}!</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                  You've been snus free since {{ QuitDate }} or {{ TimeSnusFree.years }} years, {{ TimeSnusFree.months }} months, {{ TimeSnusFree.days }} days, {{ TimeSnusFree.hours }} hours and {{ TimeSnusFree.minutes }} minutes 
+                  .
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                </div>
+                <div class="mdl-card__menu">
+                  <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                    <i class="material-icons">share</i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--4-col">
+              <div class="demo-card-event mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title mdl-card--expand">
+                  <h4>
+                    Money saved: {{ moneySaved }}kr
+                  </h4>
+                </div>
+              </div>
+            </div>
+            <div class="mdl-cell mdl-cell--4-col">
+              <div class="demo-card-event mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title mdl-card--expand">
+                  <h4>
+                    Prillor saved: {{ prillorSaved }}
+                  </h4>
+                </div>
+              </div>
+            </div>
+            <div class="mdl-cell mdl-cell--4-col">
+              <div class="demo-card-event mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title mdl-card--expand">
+                  <h4>
+                    Dosor saved: {{ dosorSaved }}
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endblock %}

@@ -1,0 +1,27 @@
+<div class="demo-layout-transparent mdl-layout mdl-js-layout">
+    <header class="mdl-layout__header mdl-layout__header--transparent">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title">Sluta Snusa Tracker</span>
+        {% if user.is_authenticated %}
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation -->
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="/home/">Home</a>
+            <a class="mdl-navigation__link" href="/settings/">Settings</a>
+
+        </nav>
+        {% endif %}
+    </div>
+  </header>
+  {% if user.is_authenticated %}
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Sluta Snusa Tracker</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="/home/">Home</a>
+      <a class="mdl-navigation__link" href="/settings/">Settings</a>
+      <a class="mdl-navigation__link" href="{% url 'logout' %}">Log Out</a>
+    </nav>
+  </div>
+  {% endif %}

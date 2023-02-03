@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sluta Snusa</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'slutasnusa/styles/material.min.css' %}">
+    <link rel="stylesheet" href="{% static 'slutasnusa/styles/styles.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  </head>
+  <body>
+    <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+      <header class="mdl-layout__header mdl-layout__header--transparent">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">Sluta Snusa</span>
+        </div>
+      </header>
+      <main class="mdl-layout__content">
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--4-col"></div>
+          <div class="mdl-cell mdl-cell--4-col">
+            <div>
+              <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title">
+                  <h2 class="mdl-card__title-text">Create Account</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                  <form action="#">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="mdl-textfield mdl-js-textfield">
+                      <input class="mdl-textfield__input" type="text" id="username">
+                      <label class="mdl-textfield__label" for="username">Username</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                      <input class="mdl-textfield__input" type="password" id="password">
+                      <label class="mdl-textfield__label" for="password">Password</label>
+                    </div>
+                    <div>
+                      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">Create Account</button>
+                    </div>
+                  </form>
+                </div>
+                <div class="mdl-card__menu">
+                  <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                    <i class="material-icons">information</i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mdl-cell mdl-cell--4-col"></div>
+        </div>
+
+      </main>
+      </div>
+  	<script src="{% static 'slutasnusa/styles/material.min.js' %}"></script>
+  </body>
+</html>
